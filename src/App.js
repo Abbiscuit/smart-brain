@@ -37,10 +37,20 @@ class App extends Component {
       input: '',
       imageUrl: '',
       box: {},
-      route: '',
+      route: 'signin',
       isSignedIn: false
     };
   }
+
+  // async componentDidMount() {
+  //   try {
+  //     const response = await fetch('http://localhost:5000');
+  //     const data = await response.json();
+  //     console.log(data);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
 
   calculateFaceLocation = data => {
     const clarifaiFace =
