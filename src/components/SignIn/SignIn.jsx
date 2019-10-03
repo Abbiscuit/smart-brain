@@ -20,7 +20,7 @@ class SignIn extends React.Component {
 
   onSubmitSignIn = () => {
     // fetchはgetリクエストなので、{}でオプションとしてPOSTメソッドに設定
-    fetch('http://localhost:5000/signin', {
+    fetch('https://lit-castle-68959.herokuapp.com/signin', {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
