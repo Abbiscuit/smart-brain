@@ -18,26 +18,24 @@ class SignIn extends React.Component {
     this.setState({ signInPassword: event.target.value });
   };
 
-  onSubmitSignIn = async () => {
-    try {
-      // fetchはgetリクエストなので、{}でオプション追加
-      const response = await fetch('http://localhost:5000/signin', {
-        method: 'post',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: this.state.signInEmail,
-          password: this.state.signInPassword
-        })
-      });
-
-      const data = await response.json();
-
-      if (data === 'success') {
-        this.props.onRouteChange('home');
-      }
-    } catch (err) {
-      console.error(err);
-    }
+  onSubmitSignIn = () => {
+    // fetchはgetリクエストなので、{}でオプションとしてPOSTメソッドに設定
+    fetch('http://localhost:5000/signin', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: this.state.signInEmail,
+        password: this.state.signInPassword
+      })
+    })
+      .then(response => response.json())
+      .then(user => {
+        if (user.id) {
+          this.props.loadUser(user);
+          this.props.onRouteChange('home');
+        }
+      })
+      .catch(err => console.error(err));
   };
 
   render() {
