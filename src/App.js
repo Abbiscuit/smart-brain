@@ -39,6 +39,8 @@ class App extends Component {
       box: {},
       route: 'signin',
       isSignedIn: false,
+      testUrl:
+        'https://images.unsplash.com/photo-1559637621-d766677659e8?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80',
       user: {
         id: '',
         name: '',
@@ -148,6 +150,7 @@ class App extends Component {
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
             />
+            {`Sample: ${this.state.testUrl}`}
             <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
         ) : route === 'signin' ? (
